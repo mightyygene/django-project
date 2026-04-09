@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'auth_app/css/style.css' %}?v=4" />
+    <title>Register</title>
+  </head>
+  <body class="landing_page_body">
+    <a class="page_back_link" href="{% url 'landing' %}" aria-label="Back to landing"><span class="back_arrow">&larr;</span></a>
+    <h2>Register</h2>
+
+    <form method="POST" class="auth_form">
+      {% csrf_token %}
+      {% if error %}
+      <p class="form_error">{{ error }}</p>
+      {% endif %}
+
+      <div class="form_group">
+        <label class="form_label" for="register_email">Email address</label>
+        <input class="form_input" id="register_email" type="email" name="email" />
+      </div>
+
+      <div class="form_group">
+        <label class="form_label" for="register_password1">Password</label>
+        <input class="form_input" id="register_password1" type="password" name="password1" />
+      </div>
+
+      <div class="form_group">
+        <label class="form_label" for="register_password2">Confirm password</label>
+        <input class="form_input" id="register_password2" type="password" name="password2" />
+      </div>
+
+      <div class="form_group">
+        <label class="form_label" for="register_username">Username</label>
+        <input class="form_input" id="register_username" type="text" name="username" />
+      </div>
+
+      <button class="btn btn_neon" type="submit">Sign up</button>
+    </form>
+  </body>
+</html>
