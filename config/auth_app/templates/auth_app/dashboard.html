@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'auth_app/css/style.css' %}" />
+    <title>Dashboard</title>
+</head>
+
+<body class="home_page">
+
+    <h2>DASHBOARD</h2>
+    <p style="color:white; font-size:20px;">
+        Hello, {{ request.user.username }}
+    </p>
+
+    <a href="{% url 'logout' %}" class="btn btn_neon">
+        Logout
+    </a>
+
+    <a href="{% url 'home' %}" class="btn btn_neon">Home</a>
+
+    <div class="circle circle_one"></div>
+    <div class="circle circle_two"></div>
+
+</body>
+
+</html>

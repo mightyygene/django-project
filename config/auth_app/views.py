@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
@@ -13,21 +13,22 @@ def home(request):
     return render(request, 'auth_app/home.html')
 
 
-def register_view(request):
+@login_required
+def dashboard(request):
+    return render(request, 'auth_app/dashboard.html')
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('landing')
+
+
+def register_view(request):
     if request.method == 'POST':
-        username =request.POST.get('username')
+        username = request.POST.get('username')
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-
-        try:
-            user_obj = User.objects.get(email=email)
-            username = user_obj.username
-        except User.DoesNotExist:
-            return render(request, 'auth_app/register.html', {
-                'error': 'User with this email does not exist'
-            })
 
         if password1 != password2:
             return render(request, 'auth_app/register.html', {
@@ -51,14 +52,12 @@ def register_view(request):
         )
 
         login(request, user)
-
-        return redirect('home')
+        return redirect('dashboard')
 
     return render(request, 'auth_app/register.html')
 
 
 def login_view(request):
-
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -79,8 +78,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
-
+            return redirect('dashboard')
         else:
             return render(request, 'auth_app/login.html', {
                 'error': 'Invalid password'

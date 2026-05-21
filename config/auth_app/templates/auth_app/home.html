@@ -1,15 +1,22 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'auth_app/css/style.css' %}?v=3" />
-    <title>Home</title>
-  </head>
-  <body class="home_page">
-    <h2>HOMEPAGE</h2>
-    <div class="circle circle_one"></div>
-    <div class="circle circle_two"></div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'auth_app/css/style.css' %}?v=3" />
+  <title>Home</title>
+</head>
+
+<body class="home_page">
+  <a class="page_back_link" href="{% url 'dashboard' %}">
+    <span class="back_arrow">&larr;</span>
+  </a>
+
+  <h2>HOMEPAGE</h2>
+  <div class="circle circle_one"></div>
+  <div class="circle circle_two"></div>
+</body>
+
 </html>

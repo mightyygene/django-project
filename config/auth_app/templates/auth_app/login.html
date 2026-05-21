@@ -1,33 +1,37 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'auth_app/css/style.css' %}?v=4" />
-    <title>Login</title>
-  </head>
-  <body class="landing_page_body">
-    <a class="page_back_link" href="{% url 'landing' %}" aria-label="Back to landing"><span class="back_arrow">&larr;</span></a>
-    <h2>Login</h2>
 
-    <form method="POST" class="auth_form">
-      {% csrf_token %}
-      {% if error %}
-      <p class="form_error">{{ error }}</p>
-      {% endif %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'auth_app/css/style.css' %}?v=4" />
+  <title>Login</title>
+</head>
 
-      <div class="form_group">
-        <label class="form_label" for="login_email">Email address</label>
-        <input class="form_input" id="login_email" type="email" name="email" />
-      </div>
+<body class="landing_page_body">
+  <a class="page_back_link" href="{% url 'landing' %}" aria-label="Back to landing"><span
+      class="back_arrow">&larr;</span></a>
+  <h2>Login</h2>
 
-      <div class="form_group">
-        <label class="form_label" for="login_password">Password</label>
-        <input class="form_input" id="login_password" type="password" name="password" />
-      </div>
+  <form method="POST" class="auth_form">
+    {% csrf_token %}
+    {% if error %}
+    <p class="form_error">{{ error }}</p>
+    {% endif %}
 
-      <button class="btn btn_neon" type="submit">Sign in</button>
-    </form>
-  </body>
+    <div class="form_group">
+      <label class="form_label" for="login_email">Email address</label>
+      <input class="form_input" id="login_email" type="email" name="email" />
+    </div>
+
+    <div class="form_group">
+      <label class="form_label" for="login_password">Password</label>
+      <input class="form_input" id="login_password" type="password" name="password" />
+    </div>
+
+    <button class="btn btn_neon" type="submit">Sign in</button>
+  </form>
+</body>
+
 </html>

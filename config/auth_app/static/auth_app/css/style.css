@@ -7,13 +7,11 @@
   justify-content: center;
   gap: 16px;
   background:
-    radial-gradient(
-      circle at 22% 28%,
+    radial-gradient(circle at 22% 28%,
       #7e166e 0%,
       #6015c2 50%,
       rgba(5, 15, 122, 0.94) 72%,
-      rgba(0, 20, 255, 0) 100%
-    ),
+      rgba(0, 20, 255, 0) 100%),
     linear-gradient(120deg, #060318 0%, #0b0830 45%, #120c3c 100%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
@@ -38,6 +36,7 @@
   transition:
     transform 0.2s ease,
     background-color 0.2s ease;
+  z-index: 10;
 }
 
 .back_arrow {
@@ -55,10 +54,19 @@
   background: rgba(17, 24, 39, 0.62);
 }
 
+h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 700;
+}
+
 .action_buttons {
   display: flex;
   gap: 24px;
-  margin-bottom: 14px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn {
@@ -144,12 +152,13 @@
   margin: 0 0 14px;
   color: #ff7fa7;
   font-weight: 600;
+  text-align: center;
 }
 
 .auth_form .btn {
   display: flex;
   margin: 26px auto 0;
-  min-width: 435px;
+  width: 100%;
   min-height: 58px;
   font-size: 20px;
   border-radius: 14px;
@@ -190,4 +199,82 @@
   left: 36%;
   top: 70%;
   transform: translate(-40%, -40%);
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 32px;
+  }
+
+  .form_label {
+    font-size: 22px;
+  }
+
+  .form_input {
+    font-size: 18px;
+    height: 46px;
+  }
+
+  .auth_form .btn {
+    font-size: 18px;
+    min-height: 52px;
+  }
+
+  .circle_one {
+    width: 560px;
+    height: 560px;
+  }
+
+  .circle_two {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing_page_body {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .action_buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .action_buttons .btn {
+    width: 100%;
+  }
+
+  .form_label {
+    font-size: 18px;
+  }
+
+  .form_input {
+    font-size: 16px;
+    height: 44px;
+  }
+
+  .page_back_link {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .circle_one {
+    width: 420px;
+    height: 420px;
+    left: 10%;
+  }
+
+  .circle_two {
+    width: 240px;
+    height: 240px;
+    left: 40%;
+    top: 75%;
+  }
 }
